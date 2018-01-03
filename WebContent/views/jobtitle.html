@@ -1,0 +1,74 @@
+<div>
+Search By Title<input ng-model="searchText.title">
+Search By Author<input ng-model="searchText.author">
+<!-- Search <input ng-model="jobTitle"> -->
+<table class="table">
+<thead>
+<tr>
+<th>Job Title</th><th>Posted on</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="job in jobs | filter:searchText">
+<td><a href="" ng-click="getJobDetail(job.id)">{{job.jobTitle}}</a></td><td>{{job.postedOn | date:'yyyy:MM;dd'}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div ng-show="showdetails">
+<b>Job Details</b>
+<b>Job title : </b>{{job.jobTitle}}<br>
+<b>Job Description :</b> {{job.jobDescription}}<br>
+<b>Skills Required :</b> {{job.skillsRequired}}<br>
+<b>Years of Experience :</b> {{job.YrsOfExp}}<br>
+<b>Location :</b> {{job.location}}<br>
+<b>Salary :</b> {{job.salary}}<br>
+<b>company Name :</b> {{job.companyName}}<br>
+</div>
+
+<!-- <div class="row vertical-offset-20">
+		<div class="col-md-6 col-md-offset-3">
+		
+		<div class="panel panel-default">
+			  	<div class="panel-heading">
+		  
+		  			<h3 class="panel-title"> All Jobs </h3>
+		        </div>
+			<div class="panel-body">
+			
+			
+			<table class="table-striped">
+					<thead>
+						<tr>
+							<th>Job Title</th>
+							<th>Job Description</th>
+							<th>Job Posted Ona</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="job in jobList">
+							<td><a href="" data-ng-click="getJob(job.id)">{{job.jobTitle}}</a></td>
+							<td>{{job.jobDesc}}</td>
+							<td>{{job.postedOn | date : "medium"}}</td>
+						</tr>
+					</tbody>
+			</table>
+			</div>
+			<div data-ng-hide="!job">
+			<h3>Job Detail </h3>
+					<pre>
+						<p>Job Title :  {{job.jobTitle}}</p>
+						<p>Job Description : {{job.jobDesc}}</p>
+						<p>Skills Required : {{job.skillsRequired}}</p>
+						<p>Location : {{job.location}}</p>		
+						<p>Company Name : {{job.companyName}}</p>
+						<p>Salary : {{job.salary}}</p>		
+						<p>Years Of Exp : {{job.yrsOfExp}}</p>		
+						<p>Posted On : {{job.postedOn}}</p>		
+					</pre>					
+			
+			</div>
+		</div>
+</div>
+</div> -->
