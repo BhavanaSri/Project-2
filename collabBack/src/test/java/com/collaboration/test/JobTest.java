@@ -1,60 +1,112 @@
 /*package com.collaboration.test;
-
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
 import java.util.Date;
-import java.util.List;
-
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-
-import com.collaboration.config.DBconfig;
-import com.collaboration.dao.JobDAO;
 import com.collaboration.model.Job;
 import com.collaboration.service.JobService;
-
-
-@ComponentScan("com.collaboration")
+@Ignore
 public class JobTest {
 	
-	 
-	static JobDAO jobDAO;
+	private static Job job;
 	
+	@Autowired
+	private static JobService jobsService;
 	
 	@BeforeClass
 	public static void initialize(){
 		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.register(DBconfig.class);
 		context.scan("com.collaboration");
 		context.refresh();
 		
-		jobDAO = (JobDAO) context.getBean("jobDAO");
+		jobsService = (JobService) context.getBean("jobsService");
 	}
-
+	
 	@Test
 	public void createJobsTest(){
 		
 		Job job = new Job();
-		job.setJobDesc("Responsible for coding, testing and deploying user friendly applications");
-		job.setJobTitle("Software Engineer");
-		job.setSkillsRequired("B.Tech");
+		job.setJobDescription("Responsible for coding, testing and deploying user friendly applications");
+		job.setJobTittle("Software Engineer");
+		job.setSkillRequried("B.Tech");
 		job.setCompanyName("XYZ Pvt Ltd");
 		job.setLocation("Hyderabad");
-		job.setYrsOfExp("2+ Yrs");
+		job.setYearsofExperience("2+ Yrs");
 		job.setSalary("250000");
-		job.setPostedOn(new Date());
+		//job.setPostedon(new Date());
 		
-		assertTrue("Problem in storing Job details",jobDAO.addJobs(job));
+		assertTrue("Problem in storing Job details",jobsService.addJobs(job));
 	}
-
-}*/
+	
+	@Ignore
+	@Test
+	public void updateJobsTest(){
+		
+		Job job = new Job();
+		job.setId(142);
+		job.setJobDescription("Responsible for coding, testing and deploying user friendly applications");
+		job.setJobTittle("Software Engineer");
+		job.setSkillRequried("B.Tech");
+		job.setCompanyName("ABC Pvt Ltd");
+		job.setLocation("Chennai");
+		job.setYearsofExperience("4+ Yrs");
+		job.setSalary("450000");
+		job.setPostedon(new Date());
+		
+		assertTrue("Problem in updating job details",jobsService.updateJobs(job));
+	}
+	
+	@Ignore
+	@Test
+	public void deleteJobsTest(){
+		
+		Job job = new Job();
+		job.setId(142);
+		job.setJobDescription("Responsible for coding, testing and deploying user friendly applications");
+		job.setJobTittle("Software Engineer");
+		job.setSkillRequried("B.Tech");
+		job.setCompanyName("XYZ Pvt Ltd");
+		job.setLocation("Hyderabad");
+		job.setYearsofExperience("2+ Yrs");
+		job.setSalary("250000");
+		job.setPostedon(new Date());
+		
+		assertTrue("Problem in deleting job details",jobsService.deleteJobs(job));
+	}
+	@Ignore
+	@Test
+	public void getJobTest(){
+		
+		Job job = jobsService.getJobById(141);
+		assertNotNull("Problem in retrieving Job details",job);
+		System.out.println("Job Id : "+job.getId()+"  Job Desc: "+job.getJobDesc()+"  Job Profile : "+job.getJobTitle()+"  Job Qualification : "+job.getSkillsRequired()+"  Job "+job.getPostedOn());
+		
+	}
+	
+	@Ignore
+	@Test
+	public void getAllJobsTest(){
+		
+		List<JobDetail> jobsList = jobsService.getAllJobs();
+		assertNotNull("Problem in retrieving All Jobs details",jobsList);
+		showJobsDetails(jobsList);
+		
+	}
+	private void showJobsDetails(List<JobDetail> jobsList) {
+		
+		for (JobDetail jobs : jobsList) {
+			
+			System.out.println(" Job Id : "+jobs.getId());
+			System.out.println(" Job Desc : "+jobs.getJobDesc());
+			System.out.println(" Job Profile : "+jobs.getJobTitle());
+			System.out.println(" Job Qualification : "+jobs.getSkillsRequired());
+			System.out.println(" Job Posted Date : "+jobs.getPostedOn());
+			
+		}
+		
+	}
+*/

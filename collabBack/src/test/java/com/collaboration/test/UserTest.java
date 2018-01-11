@@ -1,4 +1,4 @@
-package com.collaboration.test;
+/*package com.collaboration.test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import static org.junit.Assert.*;
@@ -36,4 +36,4 @@ public class UserTest {
 		user.setRole("Student");
 		assertTrue("Problem in Inserting user", userDAO.saveOrUpdate(user));	}
 	
-}
+}*/
