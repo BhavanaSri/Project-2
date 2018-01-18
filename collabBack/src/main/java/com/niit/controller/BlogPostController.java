@@ -47,10 +47,10 @@ public class BlogPostController {
 			Error error = new Error(5, "Unauthorized access");
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);// 401
 		}
-	  UsersDetails userDetails = userDAO.getUserByUsername(validUser.getUsername());// select * from user
+	//  UsersDetails userDetails = userDAO.getUserByUsername(validUser.getUsername());// select * from user
 														// where username='adam'
 		blogPost.setPostedOn(new Date());
-		blogPost.setPostedBy(userDetails);// FK column postedby_username ['adam']
+		blogPost.setPostedBy(validUser);// FK column postedby_username ['adam']
 		try {
 			blogPostDao.saveBlogPost(blogPost);
 		} catch (Exception e) {

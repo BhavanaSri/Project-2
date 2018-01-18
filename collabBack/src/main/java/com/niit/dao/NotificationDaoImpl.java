@@ -1,4 +1,4 @@
-/*package com.niit.dao;
+package com.niit.dao;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.model.Notification;
 @Repository
 public class NotificationDaoImpl implements NotificationDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -34,4 +35,4 @@ public class NotificationDaoImpl implements NotificationDao {
 		
 	}
 
-}*/
+}
