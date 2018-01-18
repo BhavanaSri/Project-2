@@ -2,7 +2,6 @@ app.controller('JobController',function($scope,$location,JobService)
 		{
 	
 	
-	
 $scope.saveJob=function(){
 		
 	console.log("job controller")

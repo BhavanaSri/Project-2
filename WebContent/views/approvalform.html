@@ -1,41 +1,27 @@
-<body  data-ng-app='myApp' data-ng-controller='AdminController'>
-<div class="container" align="justify">
-		<div class="row vertical-offset-100">
-		    <div class="col-md-6 col-md-offset-14">
-		    	<div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title" align="center">Approval form</h3>
-				 	</div><br>
+<h2>BlogPost Approval Form</h2>
+<div class="row">
+<div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<b>Blog Title : {{blogPost.blogTitle}}</b><br>
 
-<center>
-<div>{{blogPost.title}}</div>
-<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span><br>
-<span><strong>Created On:</strong>{{blogPost.postedOn | date:'medium'}}</span>
+<b>Created By:</b>{{blogPost.postedBy.firstname}}<br>
+<b>Created On:</b>{{blogPost.postedOn | date :'yyyy:MM:dd'}}
+</div>
 <div class="panel-body">
-{{blogPost.body}}
+{{blogPost.blogContent}}
 </div>
-</center>
-
-
-
-<div class="form-group" align="center">
-<input type="radio" ng-model="blogPost.approved" value="true">&nbsp <b>Approve</b><br><br>
-<input type="radio" ng-model="blogPost.approved" value="false">&nbsp <b>Reject</b><br><br>
-</div><br>
-<center>
-<button ng-click="updateApproval()" value="update Status">Update</button>
-</center><br>
-</div></div></div>
 </div>
-</body>
-
-
-<style>
- body {
-        background-color: #444;
-        
-    }
-.vertical-offset-100{
-    padding-top:10px;
-}
-</style>
+</div>
+</div>
+<form>
+<input type="radio" ng-model="blogPost.approved" value="true" ng-click="showRejectionTxt(false)">Approve
+<input type="radio" ng-model="blogPost.approved" value="false" ng-click="showRejectionTxt(true)">Reject
+<br>
+<div ng-show="isRejected">
+Enter Rejection Reason
+<input type="text" ng-model="rejectionReason" ><br>
+</div>
+<input type="submit" ng-click="updateBlogPost()"><!-- update query / delete query -->
+</form>
+{{error.message}}
