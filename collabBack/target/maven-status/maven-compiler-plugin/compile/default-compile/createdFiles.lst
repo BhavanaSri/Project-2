@@ -15,6 +15,7 @@ com\niit\dao\BlogPostLikesDaoImpl.class
 com\niit\dao\FriendDao.class
 com\niit\model\Chat.class
 com\niit\service\UserServiceImpl.class
+com\niit\controller\SockController.class
 com\niit\model\Notification.class
 com\niit\dao\BlogPostLikesDao.class
 com\niit\controller\ProfilePictureController.class

@@ -21,7 +21,7 @@ import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.LikeNotification;
 import com.niit.model.Notification;
-//import com.niit.model.ProfilePicture;
+import com.niit.model.ProfilePicture;
 import com.niit.model.UsersDetails;
 
 
@@ -68,7 +68,7 @@ public class DBConfiguration {
 		sessionBuilder.addAnnotatedClass(BlogPostLikes.class);
 		sessionBuilder.addAnnotatedClass(Notification.class);
 		sessionBuilder.addAnnotatedClass(Friend.class);
-		//sessionBuilder.addAnnotatedClass(ProfilePicture.class);
+		sessionBuilder.addAnnotatedClass(ProfilePicture.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
 		
 		logger.info("========Hibernate SessionFactory Object created=========== ");
